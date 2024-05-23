@@ -155,6 +155,19 @@ namespace Final_2252.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
+        public async Task<ActionResult> Search(string q)
+        {
+            var flight = await _dbcontext.Fights
+                .Include(f => f.AirportSourceNavigation)
+                .Include(f => f.AirportDestinationNavigation)
+                .FirstOrDefaultAsync(f => f.FightNo == q);
+
+            if (flight == null)
+            {
+                return NotFound(); // Handle case where flight with given FightNo is not found
+            }
+
+            return RedirectToAction("Details", new { id = flight.FightId });
+        }
     }
 }

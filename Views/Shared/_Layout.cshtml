@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,13 +10,14 @@
     <link rel="stylesheet" href="~/css/boardingpass.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Final_2252.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Final_2252</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -24,15 +26,24 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Airport" asp-action="Index">Airport</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Airport"
+                                asp-action="Index">Airport</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Fight" asp-action="Index">Flight</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Fight"
+                                asp-action="Index">Flight</a>
                         </li>
                     </ul>
+                </div>
+                <div class="d-flex justify-content-center mt-3 mb-3">
+                    <form asp-controller="Fight" asp-action="Search" class="d-flex flex-row">
+                        <input class="form-control" name="q" placeholder="ค้นหาข้อมูลการบิน..." />
+                        <button class="btn btn-primary ml-1" type="submit">ค้นหา</button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -53,4 +64,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

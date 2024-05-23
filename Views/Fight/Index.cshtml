@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Final_2252.Models.db.Fight>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FightNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BoardingTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Zone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seq)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FightNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoardingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seq)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FightId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FightId">Boarding Pass</a> |
+                <a asp-action="Delete" asp-route-id="@item.FightId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+
+</table>

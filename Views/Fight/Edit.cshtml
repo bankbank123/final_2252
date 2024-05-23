@@ -1,0 +1,86 @@
+﻿@model Final_2252.Models.db.Fight
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fight</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FightId" />
+            <div class="form-group">
+                <label asp-for="FightNo" class="control-label"></label>
+                <input asp-for="FightNo" class="form-control" />
+                <span asp-validation-for="FightNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirportSource" class="control-label"></label>
+                <select asp-for="AirportSource" class="form-control" asp-items="ViewBag.AirportId"></select>
+                <span asp-validation-for="AirportSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirportDestination" class="control-label"></label>
+                <select asp-for="AirportDestination" class="form-control" asp-items="ViewBag.AirportId"></select>
+                <span asp-validation-for="AirportDestination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleName" class="control-label"></label>
+                <input asp-for="MiddleName" class="form-control" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartDate" class="control-label"></label>
+                <input asp-for="DepartDate" class="form-control" />
+                <span asp-validation-for="DepartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoardingTime" class="control-label"></label>
+                <input asp-for="BoardingTime" class="form-control" />
+                <span asp-validation-for="BoardingTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gate" class="control-label"></label>
+                <input asp-for="Gate" class="form-control" />
+                <span asp-validation-for="Gate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zone" class="control-label"></label>
+                <input asp-for="Zone" class="form-control" />
+                <span asp-validation-for="Zone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seat" class="control-label"></label>
+                <input asp-for="Seat" class="form-control" />
+                <span asp-validation-for="Seat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seq" class="control-label"></label>
+                <input asp-for="Seq" class="form-control" />
+                <span asp-validation-for="Seq" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

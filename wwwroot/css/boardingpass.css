@@ -1,0 +1,87 @@
+
+.boarding-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.boarding-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    max-width: 450px;
+    height: 550px;
+    width: 100%;
+}
+
+.name-container {
+    font-size: 32px;
+    color: black;
+    font-weight: 600;
+}
+
+.airport-container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.airport-source, .airport-destination {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.airport-address {
+    color: black;
+    font-weight: 500;
+}
+
+.airport-name{
+    color: rgb(85, 85, 85);
+    font-weight: 300;
+}
+
+.airportCode-container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: red;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.plane-icon {
+    transform:  rotate(90deg);
+}
+
+.fight-content-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fight-content-header {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.fight-content-des {
+    font-size: 16px;
+    color: black;
+}
+
+.zone-container {
+    margin-left: 30px;
+}
+
+.seat-container {
+    margin-left: 40px;
+}

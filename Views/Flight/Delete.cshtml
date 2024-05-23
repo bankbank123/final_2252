@@ -1,4 +1,4 @@
-﻿@model Final_2252.Models.db.Fight
+﻿@model Final_2252.Models.db.Flight
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FightNo)
+            @Html.DisplayNameFor(model => model.FlightNo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FightNo)
+            @Html.DisplayFor(model => model.FlightNo)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
@@ -72,21 +72,21 @@
             @Html.DisplayFor(model => model.Seq)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AirportDestinationNavigation)
+            Airport Destination
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AirportDestinationNavigation.AirportId)
+            @Html.DisplayFor(model => model.AirportDestinationNavigation.AirportName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AirportSourceNavigation)
+            AirportSource
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AirportSourceNavigation.AirportId)
+            @Html.DisplayFor(model => model.AirportSourceNavigation.AirportName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="FightId" />
+        <input type="hidden" asp-for="FlightId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

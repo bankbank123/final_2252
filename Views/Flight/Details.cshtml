@@ -1,4 +1,4 @@
-﻿@model Final_2252.Models.db.Fight
+﻿@model Final_2252.Models.db.Flight
 
 @{
     ViewData["Title"] = "Bording Pass";
@@ -45,7 +45,7 @@
                     Flight No.
                 </div>
                 <div class="fight-des fight-content-des">
-                    @Html.DisplayFor(model => model.FightNo)
+                    @Html.DisplayFor(model => model.FlightNo)
                 </div>
             </div>
             <div class="depart-date-container">
@@ -101,7 +101,7 @@
         </div>
     </div>
     <div class="edit-container">
-        <a asp-action="Edit" asp-route-id="@Model?.FightId">Edit</a> |
+        <a asp-action="Edit" asp-route-id="@Model?.FlightId">Edit</a> |
         <a asp-action="Index">Back to List</a>
     </div>
 

@@ -5,12 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Final_2252.Models.db;
 
-public partial class Fight
+public partial class Flight
 {
-    public int FightId { get; set; }
-
+    public int FlightId { get; set; }
     [DisplayName("Flight No.")]
-    public string FightNo { get; set; } = null!;
+    public string FlightNo { get; set; } = null!;
 
     public int AirportSource { get; set; }
 
@@ -38,8 +37,7 @@ public partial class Fight
 
     public string Seq { get; set; } = null!;
 
-    [DisplayName("Airport Destination")]
     public virtual Airport AirportDestinationNavigation { get; set; } = null!;
-    [DisplayName("AirportSource")]
+
     public virtual Airport AirportSourceNavigation { get; set; } = null!;
 }

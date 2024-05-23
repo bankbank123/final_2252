@@ -5,17 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Final_2252.Controllers
 {
-    public class FightController : Controller
+    public class FlightController : Controller
     {
         private readonly FinalDb2252Context _dbcontext;
-        public FightController(FinalDb2252Context dbcontext)
+        public FlightController(FinalDb2252Context dbcontext)
         {
             _dbcontext = dbcontext;
         }
         // GET: FightController
         public async Task<ActionResult> Index()
         {
-            var flights = _dbcontext.Fights
+            var flights = _dbcontext.Flights
                 .Include(f => f.AirportSourceNavigation)
                 .Include(f => f.AirportDestinationNavigation)
                 .ToListAsync();
@@ -30,17 +30,17 @@ namespace Final_2252.Controllers
                 return NotFound();
             }
 
-            var fight = await _dbcontext.Fights
+            var flight = await _dbcontext.Flights
                 .Include(f => f.AirportSourceNavigation)
                 .Include(f => f.AirportDestinationNavigation)
-                .FirstOrDefaultAsync(f => f.FightId == id);
+                .FirstOrDefaultAsync(f => f.FlightId == id);
 
-            if (fight == null)
+            if (flight == null)
             {
                 return NotFound();
             }
 
-            return View(fight);
+            return View(flight);
         }
 
         // GET: FightController/Create
@@ -53,15 +53,23 @@ namespace Final_2252.Controllers
         // POST: FightController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("FightId,FightNo, AirportSource, AirportDestination, FirstName, MiddleName, LastName, DepartDate, BoardingTime, Gate, Zone, Seat, Seq")] Fight fight,
+        public async Task<ActionResult> Create([Bind("FlightId ,FlightNo, AirportSource, AirportDestination, FirstName, MiddleName, LastName, DepartDate, BoardingTime, Gate, Zone, Seat, Seq")] Flight fight,
             Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary modelState)
         {
+            
+            
             if (!modelState.IsValid)
             {
                 ViewData["AirportID"] = new SelectList(_dbcontext.Airports, "AirportId", "AirportName", "AirportCode", "Address");
                 return View(fight);
             }
 
+            if (fight.AirportDestination == fight.AirportSource)
+            {
+                ViewData["AirportID"] = new SelectList(_dbcontext.Airports, "AirportId", "AirportName", "AirportCode", "Address");
+                ModelState.AddModelError("", "Airport of origin and destination cannot be the same.");
+                return View(fight); 
+            }
 
             _dbcontext.Add(fight);
             await _dbcontext.SaveChangesAsync();
@@ -77,7 +85,7 @@ namespace Final_2252.Controllers
             {
                 return NotFound();
             }
-            var airport = await _dbcontext.Fights.FindAsync(id);
+            var airport = await _dbcontext.Flights.FindAsync(id);
             if (airport == null)
             {
                 return NotFound();
@@ -88,26 +96,33 @@ namespace Final_2252.Controllers
         // POST: FightController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, [Bind("FightId,FightNo, AirportSource, AirportDestination, FirstName, MiddleName, LastName, DepartDate, BoardingTime, Gate, Zone, Seat, Seq")] Fight fight,
+        public async Task<ActionResult> Edit(int id, [Bind("FlightId,FlightNo, AirportSource, AirportDestination, FirstName, MiddleName, LastName, DepartDate, BoardingTime, Gate, Zone, Seat, Seq")] Flight fight,
             Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary modelState)
         {
 
-            if (id != fight.FightId)
+            if (fight.AirportDestination == fight.AirportSource)
+            {
+                ModelState.AddModelError("", "Airport of origin and destination cannot be the same.");
+                return View(); 
+            }
+
+            if (id != fight.FlightId)
             {
                 return NotFound();
             }
+
             if (modelState.IsValid)
             {
 
                 try
                 {
-                    _dbcontext.Fights.Update(fight);
+                    _dbcontext.Flights.Update(fight);
                     await _dbcontext.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FightExists(fight.FightId))
+                    if (!FightExists(fight.FlightId))
                     {
                         return NotFound();
                     }
@@ -122,7 +137,7 @@ namespace Final_2252.Controllers
         }
         private bool FightExists(int id)
         {
-            return _dbcontext.Fights.Any(a => a.FightId == id);
+            return _dbcontext.Flights.Any(a => a.FlightId == id);
         }
         // GET: FightController/Delete/5
         public async Task<ActionResult> Delete(int id)
@@ -131,12 +146,15 @@ namespace Final_2252.Controllers
             {
                 return NotFound();
             }
-            var fight = await _dbcontext.Fights.FindAsync(id);
-            if (fight == null)
+            var flight = await _dbcontext.Flights
+                .Include(f => f.AirportSourceNavigation)
+                .Include(f => f.AirportDestinationNavigation)
+                .FirstOrDefaultAsync(f => f.FlightId == id);
+            if (flight == null)
             {
                 return NotFound();
             }
-            return View(fight);
+            return View(flight);
         }
 
         // POST: FightController/Delete/5
@@ -145,29 +163,29 @@ namespace Final_2252.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            var fight = await _dbcontext.Fights.FindAsync(id);
+            var fight = await _dbcontext.Flights.FindAsync(id);
             if (fight == null)
             {
                 return NotFound();
             }
-            _dbcontext.Fights.Remove(fight);
+            _dbcontext.Flights.Remove(fight);
             await _dbcontext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<ActionResult> Search(string q)
         {
-            var flight = await _dbcontext.Fights
+            var flight = await _dbcontext.Flights
                 .Include(f => f.AirportSourceNavigation)
                 .Include(f => f.AirportDestinationNavigation)
-                .FirstOrDefaultAsync(f => f.FightNo == q);
+                .FirstOrDefaultAsync(f => f.FlightNo == q);
 
             if (flight == null)
             {
-                return NotFound(); // Handle case where flight with given FightNo is not found
+                return NotFound(); 
             }
 
-            return RedirectToAction("Details", new { id = flight.FightId });
+            return RedirectToAction("Details", new { id = flight.FlightId });
         }
     }
 }

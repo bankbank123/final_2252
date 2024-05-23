@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Final_2252.Models.db.Fight>
+﻿@model IEnumerable<Final_2252.Models.db.Flight>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FightNo)
+                @Html.DisplayNameFor(model => model.FlightNo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -49,7 +49,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FightNo)
+                @Html.DisplayFor(modelItem => item.FlightNo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -79,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.Seq)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.FightId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FightId">Boarding Pass</a> |
-                <a asp-action="Delete" asp-route-id="@item.FightId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.FlightId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FlightId">Boarding Pass</a> |
+                <a asp-action="Delete" asp-route-id="@item.FlightId">Delete</a>
             </td>
         </tr>
 }

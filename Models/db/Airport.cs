@@ -13,7 +13,7 @@ public partial class Airport
 
     public string Address { get; set; } = null!;
 
-    public virtual ICollection<Fight> FightAirportDestinationNavigations { get; set; } = new List<Fight>();
+    public virtual ICollection<Flight> FlightAirportDestinationNavigations { get; set; } = new List<Flight>();
 
-    public virtual ICollection<Fight> FightAirportSourceNavigations { get; set; } = new List<Fight>();
+    public virtual ICollection<Flight> FlightAirportSourceNavigations { get; set; } = new List<Flight>();
 }
